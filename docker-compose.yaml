@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3002:3000"
+    volumes:
+      #this means do not touch this file inside the container,keep it
+      - /app/node_modules
+      #. buradaki lokasyon demek istiyor, yani burayı /app e volumle
+      - .:/app
+      #BU KOD OLMADAN WINDOWSTA GÜNCELLEMEYİ GÖREMİYORMUŞ
+    environment:
+      - CHOKIDAR_USEPOLLING=true      
